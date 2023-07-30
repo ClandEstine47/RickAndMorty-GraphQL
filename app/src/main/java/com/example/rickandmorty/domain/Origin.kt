@@ -1,6 +1,6 @@
 package com.example.rickandmorty.domain
 
 data class Origin(
-    val name: String,
-    val type: String
+    val name: String?,
+    val type: String?
 )
