@@ -1,6 +1,6 @@
 package com.example.rickandmorty.domain
 
 data class SimpleCharacter(
-    val info: List<Info>,
+    val info: Info,
     val results: List<Results>
 )

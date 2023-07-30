@@ -1,4 +1,4 @@
-query Character($page: Int) {
+query Characters($page: Int) {
     characters(page: $page) {
         info {
             count
