@@ -5,9 +5,9 @@ data class DetailedCharacter(
     val gender: String?,
     val id: String?,
     val image: String?,
-    val location: List<Location>,
+    val location: Location,
     val name: String?,
-    val origin: List<Origin>,
+    val origin: Origin,
     val species: String?,
     val status: String?,
     val type: String?

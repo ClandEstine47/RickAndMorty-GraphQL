@@ -1,6 +1,7 @@
 package com.example.rickandmorty.data
 
 import com.apollographql.apollo3.ApolloClient
+import com.example.CharacterQuery
 import com.example.CharactersQuery
 import com.example.rickandmorty.domain.CharacterClient
 import com.example.rickandmorty.domain.DetailedCharacter
@@ -19,6 +20,11 @@ class ApolloCharacterClient(
     }
 
     override suspend fun getCharacter(characterID: String): DetailedCharacter? {
-        TODO("return DetailedCharacter")
+        return apolloClient
+            .query(CharacterQuery(characterID))
+            .execute()
+            .data
+            ?.character
+            ?.toDetailedCharacter()
     }
 }
