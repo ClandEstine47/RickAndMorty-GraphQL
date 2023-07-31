@@ -12,9 +12,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
-fun DetailedCharacterScreen() {
+fun DetailedCharacterScreen(
+    navController: NavController,
+    id: String?,
+    state: CharacterViewModel.CharactersState
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -27,7 +32,7 @@ fun DetailedCharacterScreen() {
                 .padding(10.dp),
             horizontalArrangement = Arrangement.Center
         ) {
-            Text(text = "Name", fontSize = 30.sp, fontWeight = FontWeight.SemiBold)
+            Text(text = "$id", fontSize = 30.sp, fontWeight = FontWeight.SemiBold)
         }
     }
 }
