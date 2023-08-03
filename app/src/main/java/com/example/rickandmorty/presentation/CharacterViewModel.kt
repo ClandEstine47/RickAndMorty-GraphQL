@@ -49,4 +49,12 @@ class CharacterViewModel @Inject constructor(
             ) }
         }
     }
+
+    fun onBackPressed() {
+        viewModelScope.launch {
+            _state.update { it.copy(
+                character = null
+            ) }
+        }
+    }
 }

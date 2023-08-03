@@ -1,5 +1,6 @@
 package com.example.rickandmorty.presentation
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -31,7 +32,8 @@ import com.example.rickandmorty.ui.theme.Color5
 @Composable
 fun DetailedCharacterScreen(
     navController: NavController,
-    state: CharacterViewModel.CharactersState
+    state: CharacterViewModel.CharactersState,
+    onBackPressed: () -> Unit
 ) {
     val context = LocalContext.current
 
@@ -77,5 +79,10 @@ fun DetailedCharacterScreen(
             Text(text = "Status: " + state.character?.status, fontSize = 20.sp)
             Text(text = "Type: " + if (state.character?.type.isNullOrEmpty()) "None" else state.character?.type, fontSize = 20.sp)
         }
+    }
+
+    BackHandler {
+        navController.popBackStack()
+        onBackPressed()
     }
 }

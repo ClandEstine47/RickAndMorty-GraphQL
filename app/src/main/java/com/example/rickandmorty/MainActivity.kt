@@ -27,9 +27,6 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val viewModel = hiltViewModel<CharacterViewModel>()
                 val state by viewModel.state.collectAsState()
-//                CharactersScreen(
-//                    state = state
-//                )
 
                 NavHost(
                     navController = navController,
@@ -46,23 +43,10 @@ class MainActivity : ComponentActivity() {
                     composable(CharacterScreens.DetailedCharacterScreen.name) {
                         DetailedCharacterScreen(
                             navController,
-                            state
+                            state,
+                            onBackPressed = viewModel::onBackPressed
                         )
                     }
-
-//                    composable(
-//                        CharacterScreens.DetailedCharacterScreen.name + "/{id}",
-//                        arguments = listOf(navArgument("id") {
-//                            type = NavType.StringType
-//                            defaultValue = ""
-//                        })
-//                    ) { backStackEntry ->
-//                        DetailedCharacterScreen(
-//                            navController = navController,
-//                            backStackEntry.arguments?.getString("id"),
-//                            state
-//                        )
-//                    }
                 }
             }
         }
