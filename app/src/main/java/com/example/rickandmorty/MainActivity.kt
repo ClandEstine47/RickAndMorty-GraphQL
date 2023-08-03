@@ -38,23 +38,31 @@ class MainActivity : ComponentActivity() {
                     composable(CharacterScreens.SimpleCharacterScreen.name) {
                         SimpleCharacterScreen(
                             navController,
+                            state,
+                            onSelectCharacter = viewModel::onSelectCharacter
+                        )
+                    }
+
+                    composable(CharacterScreens.DetailedCharacterScreen.name) {
+                        DetailedCharacterScreen(
+                            navController,
                             state
                         )
                     }
 
-                    composable(
-                        CharacterScreens.DetailedCharacterScreen.name + "/{id}",
-                        arguments = listOf(navArgument("id") {
-                            type = NavType.StringType
-                            defaultValue = ""
-                        })
-                    ) { backStackEntry ->
-                        DetailedCharacterScreen(
-                            navController = navController,
-                            backStackEntry.arguments?.getString("id"),
-                            state
-                        )
-                    }
+//                    composable(
+//                        CharacterScreens.DetailedCharacterScreen.name + "/{id}",
+//                        arguments = listOf(navArgument("id") {
+//                            type = NavType.StringType
+//                            defaultValue = ""
+//                        })
+//                    ) { backStackEntry ->
+//                        DetailedCharacterScreen(
+//                            navController = navController,
+//                            backStackEntry.arguments?.getString("id"),
+//                            state
+//                        )
+//                    }
                 }
             }
         }

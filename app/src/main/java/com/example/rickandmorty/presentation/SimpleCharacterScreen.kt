@@ -33,7 +33,8 @@ import com.example.rickandmorty.ui.theme.Color5
 @Composable
 fun SimpleCharacterScreen(
     navController: NavController,
-    state: CharacterViewModel.CharactersState
+    state: CharacterViewModel.CharactersState,
+    onSelectCharacter: (String) -> Unit
 ) {
     Box(modifier = Modifier.fillMaxSize()
         .background(Color5)
@@ -50,8 +51,9 @@ fun SimpleCharacterScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
+                                onSelectCharacter(character.id!!)
                                 navController.navigate(
-                                    route = CharacterScreens.DetailedCharacterScreen.name + "/${character.id}"
+                                    route = CharacterScreens.DetailedCharacterScreen.name
                                 )
                             }
                             .padding(8.dp)

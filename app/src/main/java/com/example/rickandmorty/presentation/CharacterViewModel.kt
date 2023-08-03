@@ -41,4 +41,12 @@ class CharacterViewModel @Inject constructor(
         val character: DetailedCharacter? = null,
         val isLoading: Boolean = false
     )
+
+    fun onSelectCharacter(id: String) {
+        viewModelScope.launch {
+            _state.update { it.copy(
+                character = getCharacterUseCase.execute(id)
+            ) }
+        }
+    }
 }
